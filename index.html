@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#172554">
+<meta name="description" content="بوابة الرياضيات التفاعلية للصفوف الرابع والخامس والسادس">
+<title>بوابة الرياضيات | تعلّم واكتشف</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" onclick="showHome();return false" aria-label="الرئيسية">
+    <span class="brand-mark">π</span><span><b>بوابة الرياضيات</b><small>نتعلّمها بذكاء ✨</small></span>
+  </a>
+  <div class="top-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="تغيير المظهر" title="تغيير المظهر">🌙</button>
+    <div class="points-pill">⭐ <b id="points">0</b> نقطة</div>
+  </div>
+</header>
+<main class="container">
+  <section id="homeView">
+    <div class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">رحلتك في عالم الأرقام</span>
+        <h1>الرياضيات أسهل<br><span>مما تتخيّل!</span></h1>
+        <p>اختر صفّك، تعلّم خطوة بخطوة، واختبر مهاراتك بالتحديات الممتعة.</p>
+        <button class="primary-btn" onclick="document.getElementById('grades').scrollIntoView({behavior:'smooth'})">ابدأ التعلّم <span>←</span></button>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb1">÷</div><div class="orb orb2">×</div><div class="orb orb3">π</div>
+        <div class="math-card"><span>3</span><span>+</span><span>5</span><strong>= 8</strong></div>
+        <div class="tiny-label">فكّر • جرّب • أتقن</div>
+      </div>
+    </div>
+
+    <div class="section-heading" id="grades"><div><span class="eyebrow">خطوتك الأولى</span><h2>اختر صفّك الدراسي</h2></div><span class="heading-note">محتوى مناسب لرحلتك 🌱</span></div>
+    <div class="grade-grid">
+      <button class="grade-card grade4" onclick="selectGrade(4)"><span class="grade-symbol">４</span><span class="grade-label">الصف</span><strong>الرابع</strong><span class="grade-foot">ابدأ الأساسيات <b>←</b></span></button>
+      <button class="grade-card grade5" onclick="selectGrade(5)"><span class="grade-symbol">５</span><span class="grade-label">الصف</span><strong>الخامس</strong><span class="grade-foot">اكتشف مهارات جديدة <b>←</b></span></button>
+      <button class="grade-card grade6" onclick="selectGrade(6)"><span class="grade-symbol">６</span><span class="grade-label">الصف</span><strong>السادس</strong><span class="grade-foot">استعد للتحدّي <b>←</b></span></button>
+    </div>
+
+    <div class="section-heading"><div><span class="eyebrow">تعلّم بطريقة مختلفة</span><h2>تصفّح حسب المحور</h2></div></div>
+    <div class="topic-grid">
+      <button class="topic-card" onclick="openTopic('numbers')"><span class="topic-icon purple">🔢</span><span><b>الأعداد والعمليات</b><small>الجمع، الضرب، القسمة وترتيب العمليات</small></span><span class="arrow">←</span></button>
+      <button class="topic-card" onclick="openTopic('fractions')"><span class="topic-icon orange">🍕</span><span><b>الكسور والأعداد العشرية</b><small>التمثيل والعمليات والنسبة والتناسب</small></span><span class="arrow">←</span></button>
+      <button class="topic-card" onclick="openTopic('geometry')"><span class="topic-icon green">📐</span><span><b>الهندسة والقياس</b><small>الزوايا والأشكال والمحيط والمساحة</small></span><span class="arrow">←</span></button>
+      <button class="topic-card" onclick="openTopic('data')"><span class="topic-icon blue">📊</span><span><b>الإحصاء والتمثيلات</b><small>الجداول والأعمدة والخطوط والإحداثيات</small></span><span class="arrow">←</span></button>
+    </div>
+    <div class="bottom-banner"><span class="banner-emoji">🏆</span><div><b>كل سؤال فرصة للتقدّم!</b><p>حلّ التحديات واجمع النقاط وراقب تقدّمك.</p></div><button class="outline-btn" onclick="startQuiz()">ابدأ تحدّيًا <span>←</span></button></div>
+  </section>
+
+  <section id="lessonView" class="hidden">
+    <button class="back-btn" onclick="showHome()">→ العودة للرئيسية</button>
+    <div class="lesson-head"><span class="eyebrow" id="lessonEyebrow">رحلتك التعليمية</span><h1 id="lessonTitle">عنوان الدرس</h1><p id="lessonIntro"></p></div>
+    <div class="tabs" role="tablist"><button class="tab active" onclick="setTab('learn',this)">📘 تعلّم</button><button class="tab" onclick="setTab('practice',this)">✍️ تدرّب</button><button class="tab" onclick="setTab('quiz',this)">⚡ تحدّي سريع</button></div>
+    <div id="learnPanel" class="lesson-panel"></div>
+    <div id="practicePanel" class="lesson-panel hidden"></div>
+    <div id="quizPanel" class="lesson-panel hidden"></div>
+  </section>
+  <section id="topicView" class="hidden">
+    <button class="back-btn" onclick="showHome()">→ العودة للرئيسية</button>
+    <div class="lesson-head"><span class="eyebrow">مسار التعلّم حسب المحور</span><h1 id="topicTitle"></h1><p>اختر درسًا للبدء. المحتوى الحالي نموذج تفاعلي قابل للتوسيع.</p></div>
+    <div id="topicLessons" class="topic-list"></div>
+  </section>
+</main>
+<footer><span class="footer-mark">π</span><b>بوابة الرياضيات</b><span>التعلّم رحلة، وكل خطوة إنجاز.</span><small>نسخة تجريبية تعليمية مجانية • يمكن تطوير المحتوى وفق المنهاج المعتمد</small></footer>
+<nav class="mobile-nav"><button class="nav-active" onclick="showHome()">⌂<small>الرئيسية</small></button><button onclick="selectGrade(4)">▦<small>الصفوف</small></button><button onclick="startQuiz()">✦<small>التحدّي</small></button></nav>
+<script src="app.js"></script>
+</body>
+</html>
