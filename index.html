@@ -1,72 +1,69 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#172554">
-<meta name="description" content="بوابة الرياضيات التفاعلية للصفوف الرابع والخامس والسادس">
-<title>بوابة الرياضيات | تعلّم واكتشف</title>
-<link rel="stylesheet" href="style.css">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#155e75"><meta name="description" content="مساعد المعلم: تحضير دروس لجميع المواد، أوراق عمل، وسائل تعليمية وتقويمات قابلة للطباعة.">
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css"><title>مساعد المعلّم | مساحة عملك التعليمية</title>
 </head>
 <body>
+<div class="app-shell">
 <header class="topbar">
-  <a class="brand" href="#" onclick="showHome();return false" aria-label="الرئيسية">
-    <span class="brand-mark">π</span><span><b>بوابة الرياضيات</b><small>نتعلّمها بذكاء ✨</small></span>
-  </a>
-  <div class="top-actions">
-    <button class="icon-btn" id="themeBtn" aria-label="تغيير المظهر" title="تغيير المظهر">🌙</button>
-    <div class="points-pill">⭐ <b id="points">0</b> نقطة</div>
-  </div>
+  <button class="icon-btn" id="backBtn" aria-label="رجوع" title="رجوع">←</button>
+  <a class="brand" href="#home" aria-label="الرئيسية"><span class="brand-mark">م</span><span><b>مساعد المعلّم</b><small>خطّط، حضّر، وعلّم بثقة</small></span></a>
+  <button class="icon-btn" id="themeBtn" aria-label="تبديل الوضع الليلي" title="الوضع الليلي">☾</button>
 </header>
-<main class="container">
-  <section id="homeView">
-    <div class="hero">
-      <div class="hero-copy">
-        <span class="eyebrow">رحلتك في عالم الأرقام</span>
-        <h1>الرياضيات أسهل<br><span>مما تتخيّل!</span></h1>
-        <p>اختر صفّك، تعلّم خطوة بخطوة، واختبر مهاراتك بالتحديات الممتعة.</p>
-        <button class="primary-btn" onclick="document.getElementById('grades').scrollIntoView({behavior:'smooth'})">ابدأ التعلّم <span>←</span></button>
-      </div>
-      <div class="hero-art" aria-hidden="true">
-        <div class="orb orb1">÷</div><div class="orb orb2">×</div><div class="orb orb3">π</div>
-        <div class="math-card"><span>3</span><span>+</span><span>5</span><strong>= 8</strong></div>
-        <div class="tiny-label">فكّر • جرّب • أتقن</div>
-      </div>
-    </div>
-
-    <div class="section-heading" id="grades"><div><span class="eyebrow">خطوتك الأولى</span><h2>اختر صفّك الدراسي</h2></div><span class="heading-note">محتوى مناسب لرحلتك 🌱</span></div>
-    <div class="grade-grid">
-      <button class="grade-card grade4" onclick="selectGrade(4)"><span class="grade-symbol">４</span><span class="grade-label">الصف</span><strong>الرابع</strong><span class="grade-foot">ابدأ الأساسيات <b>←</b></span></button>
-      <button class="grade-card grade5" onclick="selectGrade(5)"><span class="grade-symbol">５</span><span class="grade-label">الصف</span><strong>الخامس</strong><span class="grade-foot">اكتشف مهارات جديدة <b>←</b></span></button>
-      <button class="grade-card grade6" onclick="selectGrade(6)"><span class="grade-symbol">６</span><span class="grade-label">الصف</span><strong>السادس</strong><span class="grade-foot">استعد للتحدّي <b>←</b></span></button>
-    </div>
-
-    <div class="section-heading"><div><span class="eyebrow">تعلّم بطريقة مختلفة</span><h2>تصفّح حسب المحور</h2></div></div>
-    <div class="topic-grid">
-      <button class="topic-card" onclick="openTopic('numbers')"><span class="topic-icon purple">🔢</span><span><b>الأعداد والعمليات</b><small>الجمع، الضرب، القسمة وترتيب العمليات</small></span><span class="arrow">←</span></button>
-      <button class="topic-card" onclick="openTopic('fractions')"><span class="topic-icon orange">🍕</span><span><b>الكسور والأعداد العشرية</b><small>التمثيل والعمليات والنسبة والتناسب</small></span><span class="arrow">←</span></button>
-      <button class="topic-card" onclick="openTopic('geometry')"><span class="topic-icon green">📐</span><span><b>الهندسة والقياس</b><small>الزوايا والأشكال والمحيط والمساحة</small></span><span class="arrow">←</span></button>
-      <button class="topic-card" onclick="openTopic('data')"><span class="topic-icon blue">📊</span><span><b>الإحصاء والتمثيلات</b><small>الجداول والأعمدة والخطوط والإحداثيات</small></span><span class="arrow">←</span></button>
-    </div>
-    <div class="bottom-banner"><span class="banner-emoji">🏆</span><div><b>كل سؤال فرصة للتقدّم!</b><p>حلّ التحديات واجمع النقاط وراقب تقدّمك.</p></div><button class="outline-btn" onclick="startQuiz()">ابدأ تحدّيًا <span>←</span></button></div>
-  </section>
-
-  <section id="lessonView" class="hidden">
-    <button class="back-btn" onclick="showHome()">→ العودة للرئيسية</button>
-    <div class="lesson-head"><span class="eyebrow" id="lessonEyebrow">رحلتك التعليمية</span><h1 id="lessonTitle">عنوان الدرس</h1><p id="lessonIntro"></p></div>
-    <div class="tabs" role="tablist"><button class="tab active" onclick="setTab('learn',this)">📘 تعلّم</button><button class="tab" onclick="setTab('practice',this)">✍️ تدرّب</button><button class="tab" onclick="setTab('quiz',this)">⚡ تحدّي سريع</button></div>
-    <div id="learnPanel" class="lesson-panel"></div>
-    <div id="practicePanel" class="lesson-panel hidden"></div>
-    <div id="quizPanel" class="lesson-panel hidden"></div>
-  </section>
-  <section id="topicView" class="hidden">
-    <button class="back-btn" onclick="showHome()">→ العودة للرئيسية</button>
-    <div class="lesson-head"><span class="eyebrow">مسار التعلّم حسب المحور</span><h1 id="topicTitle"></h1><p>اختر درسًا للبدء. المحتوى الحالي نموذج تفاعلي قابل للتوسيع.</p></div>
-    <div id="topicLessons" class="topic-list"></div>
-  </section>
+<main id="mainContent">
+<section class="page active" id="page-home" data-title="الرئيسية">
+  <div class="hero"><div class="hero-copy"><span class="eyebrow">مساحة عملك التعليمية</span><h1>كل ما تحتاجه<br><em>لدرسٍ أكثر إبداعًا.</em></h1><p>حضّر دروسك لجميع المواد، وأنشئ أوراق العمل والوسائل والتقويمات في مكان واحد.</p><button class="primary-btn" data-go="prepare">ابدأ تحضير درس <span>←</span></button></div><div class="hero-art" aria-hidden="true"><div class="art-sheet">✎<span>خطة درس</span><b>✓</b></div><div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div><div class="art-dot">✦</div></div></div>
+  <div class="section-head"><div><span class="eyebrow">ابدأ من هنا</span><h2>ماذا تريد أن تنجز اليوم؟</h2></div></div>
+  <div class="quick-grid">
+    <button class="quick-card teal" data-go="prepare"><span class="quick-icon">▤</span><b>تحضير درس</b><small>أهداف وخطوات وتقويم</small><span class="card-arrow">↗</span></button>
+    <button class="quick-card violet" data-go="worksheet"><span class="quick-icon">✎</span><b>ورقة عمل</b><small>أنشطة وأسئلة متنوعة</small><span class="card-arrow">↗</span></button>
+    <button class="quick-card orange" data-go="aids"><span class="quick-icon">▧</span><b>وسائل تعليمية</b><small>أفكار وأنشطة صفية</small><span class="card-arrow">↗</span></button>
+    <button class="quick-card blue" data-go="assessment"><span class="quick-icon">☷</span><b>تقويم واختبار</b><small>أسئلة بمستويات مختلفة</small><span class="card-arrow">↗</span></button>
+  </div>
+  <div class="notice"><span class="notice-icon">✦</span><div><b>مساعد ذكي عند الحاجة</b><p>يمكنك ربط الموقع بخدمة ذكاء اصطناعي ذات مستوى مجاني من صفحة الإعدادات، أو استخدام النماذج الجاهزة دون اتصال بالخدمة.</p></div><button data-go="settings" class="text-btn">الإعدادات ←</button></div>
+  <div class="section-head"><div><span class="eyebrow">طريقة العمل</span><h2>من الفكرة إلى درس جاهز</h2></div></div>
+  <div class="steps"><div><span>01</span><b>أدخل معلومات الدرس</b><small>المادة والصف والعنوان والوقت.</small></div><div><span>02</span><b>أنشئ المحتوى</b><small>استخدم النموذج أو المساعد الذكي.</small></div><div><span>03</span><b>راجع واطبع</b><small>عدّل المحتوى ثم اطبعه أو احفظه PDF.</small></div></div>
+</section>
+<section class="page" id="page-prepare" data-title="تحضير درس">
+  <div class="page-heading"><span class="eyebrow">التخطيط اليومي</span><h1>تحضير درس جديد</h1><p>نموذج مرن لجميع المواد الدراسية، وليس للرياضيات فقط.</p></div>
+  <form id="prepareForm" class="form-card">
+    <div class="form-grid"><label>المادة الدراسية<select id="subject"><option>اللغة العربية</option><option>الرياضيات</option><option>العلوم</option><option>الاجتماعيات</option><option>التربية الإسلامية</option><option>اللغة الإنجليزية</option><option>المعلوماتية</option><option>التربية الفنية</option><option>التربية الرياضية</option><option>أخرى</option></select></label>
+    <label>الصف / المرحلة<input id="grade" placeholder="مثال: الصف الخامس" required></label>
+    <label class="wide">عنوان الدرس<input id="lessonTitle" placeholder="اكتب عنوان الدرس" required></label>
+    <label>مدة الدرس<select id="duration"><option>45 دقيقة</option><option>30 دقيقة</option><option>60 دقيقة</option><option>90 دقيقة</option></select></label>
+    <label>نوع التحضير<select id="prepType"><option>تحضير يومي متكامل</option><option>تحضير مختصر</option><option>تحضير قائم على النشاط</option><option>تحضير علاجي</option></select></label>
+    <label class="wide">ملاحظات أو متطلبات خاصة<textarea id="prepNotes" rows="3" placeholder="المستوى، الوسائل المتاحة، ربط قيمي أو شرعي، فروق فردية..."></textarea></label></div>
+    <div class="form-actions"><button class="primary-btn" type="submit">إنشاء التحضير <span>✦</span></button><button class="secondary-btn" type="button" id="aiPrepareBtn">إنشاء بالذكاء الاصطناعي ✦</button></div>
+  </form>
+  <div id="prepareResult" class="result-card" hidden><div class="result-top"><div><span class="eyebrow">مسودة قابلة للتعديل</span><h2>تحضير الدرس</h2></div><div class="result-actions"><button class="secondary-btn" data-copy="prepareOutput">نسخ</button><button class="secondary-btn" data-print="prepareOutput">طباعة / PDF</button></div></div><div id="prepareOutput" class="editable-output" contenteditable="true"></div></div>
+</section>
+<section class="page" id="page-worksheet" data-title="أوراق العمل">
+  <div class="page-heading"><span class="eyebrow">تعلّم بالممارسة</span><h1>صانع أوراق العمل</h1><p>أنشطة متنوعة تراعي مستوى الطلاب وتدعم التعلم النشط.</p></div>
+  <form id="worksheetForm" class="form-card"><div class="form-grid"><label>المادة<select id="wsSubject"><option>اللغة العربية</option><option>الرياضيات</option><option>العلوم</option><option>الاجتماعيات</option><option>التربية الإسلامية</option><option>اللغة الإنجليزية</option><option>المعلوماتية</option><option>أخرى</option></select></label><label>الصف<input id="wsGrade" placeholder="مثال: الصف الرابع" required></label><label class="wide">موضوع الورقة<input id="wsTopic" placeholder="موضوع أو مهارة محددة" required></label><label>عدد الأسئلة<select id="wsCount"><option>6</option><option>8</option><option>10</option><option>12</option><option>15</option></select></label><label>مستوى الصعوبة<select id="wsLevel"><option>متدرج</option><option>أساسي</option><option>متوسط</option><option>متقدم</option></select></label><label class="wide">نوع الأسئلة<select id="wsKind"><option>متنوع</option><option>اختيار من متعدد</option><option>أكمل الفراغ</option><option>صح أو خطأ</option><option>أسئلة قصيرة وتطبيقية</option><option>نشاط جماعي</option></select></label></div><div class="form-actions"><button class="primary-btn" type="submit">إنشاء ورقة العمل ✦</button><button class="secondary-btn" type="button" id="aiWorksheetBtn">بالذكاء الاصطناعي</button></div></form>
+  <div id="worksheetResult" class="result-card" hidden><div class="result-top"><h2>ورقة عمل</h2><div class="result-actions"><button class="secondary-btn" data-copy="worksheetOutput">نسخ</button><button class="secondary-btn" data-print="worksheetOutput">طباعة / PDF</button></div></div><div id="worksheetOutput" class="editable-output" contenteditable="true"></div></div>
+</section>
+<section class="page" id="page-aids" data-title="الوسائل التعليمية">
+ <div class="page-heading"><span class="eyebrow">تعليم حيّ وممتع</span><h1>أفكار ووسائل تعليمية</h1><p>اختر فكرة قابلة للتنفيذ بأدوات بسيطة، ثم خصصها لدرسك.</p></div>
+ <div class="form-card"><div class="form-grid"><label>المادة<select id="aidSubject"><option>اللغة العربية</option><option>الرياضيات</option><option>العلوم</option><option>الاجتماعيات</option><option>التربية الإسلامية</option><option>اللغة الإنجليزية</option><option>المعلوماتية</option><option>أخرى</option></select></label><label>الصف<input id="aidGrade" placeholder="مثال: الصف السادس"></label><label class="wide">موضوع الدرس<input id="aidTopic" placeholder="ما الفكرة التي تريد شرحها؟"></label><label class="wide">المتاح لديك<select id="aidMaterials"><option>أدوات صفية بسيطة وورق</option><option>سبورة فقط</option><option>هاتف وجهاز عرض</option><option>مواد معاد تدويرها</option><option>وسائل رقمية</option></select></label></div><div class="form-actions"><button class="primary-btn" id="makeAidsBtn">اقترح وسائل تعليمية ✦</button><button class="secondary-btn" id="aiAidsBtn">بالذكاء الاصطناعي</button></div></div><div id="aidsResult" class="result-card" hidden><div class="result-top"><h2>مقترحات الوسائل</h2><button class="secondary-btn" data-print="aidsOutput">طباعة / PDF</button></div><div id="aidsOutput" class="editable-output" contenteditable="true"></div></div>
+ <div class="idea-grid"><article><span>01</span><h3>تعلّم بالمحطات</h3><p>قسّم الصف إلى محطات قصيرة، في كل محطة مهمة مختلفة ثم ينتقل الطلاب بينها.</p></article><article><span>02</span><h3>بطاقات المطابقة</h3><p>جهّز بطاقات للمفاهيم وأخرى للأمثلة، ودع الطلاب يطابقون بينها ضمن مجموعات.</p></article><article><span>03</span><h3>فكّر، ناقش، شارك</h3><p>امنح الطلاب وقتًا للتفكير الفردي، ثم النقاش الثنائي، ثم مشاركة النتائج.</p></article></div>
+</section>
+<section class="page" id="page-assessment" data-title="التقويم والاختبارات">
+ <div class="page-heading"><span class="eyebrow">قياس التعلّم</span><h1>التقويم والاختبارات</h1><p>أنشئ أسئلة تقيس الفهم والتطبيق، مع مساحة للإجابة.</p></div>
+ <form id="assessmentForm" class="form-card"><div class="form-grid"><label>المادة<select id="asSubject"><option>اللغة العربية</option><option>الرياضيات</option><option>العلوم</option><option>الاجتماعيات</option><option>التربية الإسلامية</option><option>اللغة الإنجليزية</option><option>المعلوماتية</option><option>أخرى</option></select></label><label>الصف<input id="asGrade" placeholder="الصف الدراسي" required></label><label class="wide">الوحدة أو الدرس<input id="asTopic" placeholder="الموضوع المراد تقويمه" required></label><label>عدد الأسئلة<select id="asCount"><option>5</option><option>10</option><option>15</option><option>20</option></select></label><label>نوع التقويم<select id="asType"><option>تقويم تكويني متنوع</option><option>اختبار قصير</option><option>تقويم قبلي</option><option>تقويم ختامي</option><option>أسئلة تفكير عليا</option></select></label></div><div class="form-actions"><button class="primary-btn" type="submit">إنشاء التقويم ✦</button><button class="secondary-btn" type="button" id="aiAssessmentBtn">بالذكاء الاصطناعي</button></div></form><div id="assessmentResult" class="result-card" hidden><div class="result-top"><h2>نموذج التقويم</h2><div class="result-actions"><button class="secondary-btn" data-copy="assessmentOutput">نسخ</button><button class="secondary-btn" data-print="assessmentOutput">طباعة / PDF</button></div></div><div id="assessmentOutput" class="editable-output" contenteditable="true"></div></div>
+</section>
+<section class="page" id="page-library" data-title="مكتبتي">
+ <div class="page-heading"><span class="eyebrow">أعمالك محفوظة على جهازك</span><h1>مكتبتي التعليمية</h1><p>احتفظ بالتحاضير والمواد التي أنشأتها في هذا المتصفح.</p></div><div class="library-toolbar"><input id="librarySearch" placeholder="ابحث في مكتبتك..." aria-label="بحث في المكتبة"><button class="secondary-btn" id="clearLibrary">مسح المكتبة</button></div><div id="libraryList" class="library-list"></div>
+</section>
+<section class="page" id="page-settings" data-title="الإعدادات">
+ <div class="page-heading"><span class="eyebrow">خصص تجربتك</span><h1>الإعدادات</h1><p>تحكم بالمظهر وحجم الخط وإعدادات المساعد الذكي.</p></div>
+ <div class="settings-card"><div class="setting-row"><div><b>الوضع الليلي</b><small>مظهر مريح للعين في الإضاءة المنخفضة.</small></div><button class="switch" id="themeSwitch" aria-label="الوضع الليلي"><span></span></button></div><div class="setting-row"><div><b>حجم الخط</b><small>اختر حجمًا مريحًا للقراءة والطباعة.</small></div><div class="font-controls"><button id="fontDown">أ−</button><span id="fontValue">100%</span><button id="fontUp">أ+</button></div></div></div>
+ <div class="settings-card"><span class="eyebrow">ربط الذكاء الاصطناعي</span><h2>مساعد ذكي اختياري</h2><p class="settings-description">يمكن استخدام واجهة Gemini API التي توفر مستوى مجانيًا وفق الشروط والحدود الحالية. تحتاج إلى مفتاح API خاص بك. المفتاح يُحفظ في هذا المتصفح فقط، لكن استخدام API من موقع عام قد يعرّضه للاستخراج؛ لا تستخدم مفتاحًا حساسًا أو مدفوعًا في موقع منشور للعامة.</p><label>مفتاح Gemini API<input type="password" id="apiKey" placeholder="أدخل مفتاح API هنا" autocomplete="off"></label><label>نموذج الذكاء الاصطناعي<input id="aiModel" value="gemini-2.5-flash" placeholder="اسم النموذج"></label><div class="form-actions"><button class="primary-btn" id="saveAI">حفظ الإعدادات</button><button class="secondary-btn" id="testAI">اختبار الاتصال</button><button class="text-btn" id="removeAI">حذف المفتاح</button></div><p id="aiStatus" class="status-line" role="status"></p></div>
+ <div class="settings-card"><span class="eyebrow">حول الموقع</span><h2>مساعد المعلّم</h2><p>أداة مساعدة لإعداد مسودات تعليمية قابلة للمراجعة والتعديل. راجع صحة المعلومات وملاءمة المحتوى للمنهاج قبل اعتماده.</p><div class="settings-actions"><button class="secondary-btn" id="exportData">تصدير مكتبتي</button><button class="secondary-btn" id="importData">استيراد نسخة</button><input type="file" id="importFile" accept="application/json" hidden></div></div>
+</section>
 </main>
-<footer><span class="footer-mark">π</span><b>بوابة الرياضيات</b><span>التعلّم رحلة، وكل خطوة إنجاز.</span><small>نسخة تجريبية تعليمية مجانية • يمكن تطوير المحتوى وفق المنهاج المعتمد</small></footer>
-<nav class="mobile-nav"><button class="nav-active" onclick="showHome()">⌂<small>الرئيسية</small></button><button onclick="selectGrade(4)">▦<small>الصفوف</small></button><button onclick="startQuiz()">✦<small>التحدّي</small></button></nav>
-<script src="app.js"></script>
-</body>
-</html>
+<nav class="bottom-nav" aria-label="التنقل الرئيسي"><button class="nav-item active" data-go="home"><span>⌂</span><small>الرئيسية</small></button><button class="nav-item" data-go="prepare"><span>▤</span><small>التحضير</small></button><button class="nav-item" data-go="worksheet"><span>✎</span><small>أوراق العمل</small></button><button class="nav-item" data-go="library"><span>▣</span><small>مكتبتي</small></button><button class="nav-item" data-go="settings"><span>⚙</span><small>الإعدادات</small></button></nav>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+</div><script src="app.js"></script>
+</body></html>
