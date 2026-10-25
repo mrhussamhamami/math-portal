@@ -19,3 +19,46 @@ function startQuiz(){const keys=Object.keys(lessons);const key=keys[Math.floor(M
 $("themeBtn").addEventListener("click",()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");$("themeBtn").textContent=dark?"☀️":"🌙";localStorage.setItem("mathPortalDark",dark?"1":"0");});
 if(localStorage.getItem("mathPortalDark")==="1"){document.body.classList.add("dark");$("themeBtn").textContent="☀️";}
 updatePoints();
+
+
+// Navigation history: supports the visible back button, browser back, and Android browser back.
+(function(){
+  let navStack = [];
+  const originalShowHome = window.showHome;
+  const originalSelectGrade = window.selectGrade;
+  const originalOpenTopic = window.openTopic;
+  const originalOpenLesson = window.openLesson;
+  function stateName(){ 
+    if(!$("homeView").classList.contains("hidden")) return {view:"home"};
+    if(!$("lessonView").classList.contains("hidden")) return {view:"lesson",key:currentKey,grade:currentGrade};
+    if(!$("topicView").classList.contains("hidden")) return {view:"topic",key:currentKey,grade:currentGrade};
+    return {view:"home"};
+  }
+  function remember(){ const s=stateName(); navStack.push(s); if(navStack.length>30) navStack.shift(); }
+  function restore(s){
+    if(!s || s.view==="home"){ originalShowHome(); return; }
+    if(s.view==="lesson"){ currentGrade=s.grade||0; originalOpenLesson(s.key||"numbers"); return; }
+    if(s.view==="topic"){ if(s.grade){originalSelectGrade(s.grade);}else{originalOpenTopic(s.key||"numbers");} return; }
+    originalShowHome();
+  }
+  window.showHome = function(){ remember(); originalShowHome(); };
+  window.selectGrade = function(g){ remember(); originalSelectGrade(g); };
+  window.openTopic = function(k){ remember(); originalOpenTopic(k); };
+  window.openLesson = function(k){ remember(); originalOpenLesson(k); };
+  window.goBack = function(){
+    if(navStack.length){ const prev=navStack.pop(); restore(prev); }
+    else originalShowHome();
+  };
+  document.querySelectorAll(".back-btn").forEach(btn=>{
+    btn.setAttribute("onclick","goBack()");
+    btn.setAttribute("aria-label","الرجوع إلى الصفحة السابقة");
+  });
+  // Browser history entry allows Android/browser back gesture/button to return within the site first.
+  history.replaceState({mathPortal:true,view:"home"},"","#home");
+  history.pushState({mathPortal:true,view:"home"},"","#portal");
+  window.addEventListener("popstate",function(){
+    if(navStack.length){ const prev=navStack.pop(); restore(prev); }
+    else originalShowHome();
+    history.pushState({mathPortal:true,view:"portal"},"","#portal");
+  });
+})();
